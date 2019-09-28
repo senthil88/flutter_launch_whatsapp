@@ -28,10 +28,9 @@ class FlutterLaunchPlugin(val mRegistrar: Registrar): MethodCallHandler {
 
       if (call.method.equals("launchWathsApp")) {
 
-        val phone: String? = call.argument("phone")
         val message: String? = call.argument("message")
 
-        val url: String = "https://api.whatsapp.com/send?phone=$phone&text=${URLEncoder.encode(message, "UTF-8")}"
+        val url: String = "https://api.whatsapp.com/send?text=${URLEncoder.encode(message, "UTF-8")}"
 
         if (appInstalledOrNot("com.whatsapp")) {
           val intent: Intent = Intent(Intent.ACTION_VIEW)
